@@ -22,22 +22,19 @@ param eval_param(int argc,char * argv[])
 		switch(opt)
 		{
 			case 'c':
-				cout << optarg;
 				break;
 			case 'o':
-				cout << optarg;
 				break;
 			case 'x':
-				cout << optarg;
 				break;
 			default:
-				throw invalid_argument("Valid options are : -c (input text file) -o (output file) -x (input hff file)");
+				throw invalid_argument("Error : Valid options are : -c (input text file) -o (output file) -x (input hff file)");
 		}
 		k++;
 	}
-	if (optind >= argc)
+	if (argc == 1)
 	{
-		throw invalid_argument("Valid options are : -c (input text file) -o (output file) -x (input hff file)");
+		throw invalid_argument("Error : no parameters. Valid options are : -c (input text file) -o (output file) -x (input hff file)");
 	}
 	struct param p;
 	p.value = s;

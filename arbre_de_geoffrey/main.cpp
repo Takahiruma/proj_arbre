@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 			{
 				case 'c':
 					sm = read_file(p.value[i]);
-					//cout << sm["e"];
+					cout << sm["e"];
 					break;
 				case 'o':
 					cout <<"a";
@@ -23,9 +23,9 @@ int main(int argc, char* argv[])
 			}
 		}
 	}
-	catch(exception e)
+	catch(exception &e)
 	{
-		e.what();
+		cerr << e.what() <<endl;
 	}
 	return 0;
 }

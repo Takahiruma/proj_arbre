@@ -7,7 +7,7 @@ class arbre{
 	
 	arbre(std::string n, noeud* r);
 	~arbre();
-	noeud trouve_noeud(std::string s, noeud* n);
+	noeud trouve_noeud(noeud* nvnoeud, noeud* noeud);
 	void inserer_noeud(noeud* n);
 	
 	inline noeud& get_root()const{return *root;}
