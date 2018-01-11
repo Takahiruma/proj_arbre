@@ -16,19 +16,18 @@ noeud arbre::trouve_noeud(std::string s, noeud* n){
 		ad=trouve_noeud(s,n->get_gauche());
 	else
 		ad=trouve_noeud(s,n->get_droite());
-	
-	
 	return *ad;
 }
 
-void arbre::inserer_noeud(noeud* n){
-	noeud *here = &n;
-	if (IsEmpty(root))
-		root = noeud(n);
+void arbre::inserer_noeud(noeud* nvnoeud, noeud* noeud){
+	if (IsEmpty(noeud))
+		noeud = nvnoeud;
 	else
-		if(n->get_mot() < root->get_mot()){
-			if(IsEmpty(here->get_gauche()))
-				
-		}
-			
+	{
+		nvnoeud.set_parent(noeud);
+		if (nvnoeud->get_occurence() > noeud->get_occurence())
+			inserer_noeud(nvnoeud,noeud->get_gauche());
+		else
+			inserer_noeud(nvnoeud,noeud->get_droite());
+	}
 }
