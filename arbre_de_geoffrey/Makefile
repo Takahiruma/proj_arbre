@@ -1,14 +1,14 @@
 G= g++
 wall= -Wall -std=c++11
 
-all :: main.exe
+all :: huff.exe
 
 %.o: %.cpp
 	$(G) $(wall) -c $*.cpp 
 
-main.exe: noeud.o arbre.o main.o
+huff.exe: main.o
 	$(G) $(wall) -o $@ $^
-	
+#noeud.o arbre.o	
 clean ::
 	del -f *.o
 	del -f *.exe

@@ -2,7 +2,7 @@
 #include<fstream>
 #include<unordered_map>
 #include<string>
-#include<exceptions>
+#include<exception>
 
 using namespace std;
 
