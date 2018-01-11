@@ -3,11 +3,22 @@
 #include<exception>
 
 
-string* eval_param(int argc,char * argv[])
+struct param{
+	int length;
+	string * value;
+	int * copt;
+};
+
+param eval_param(int argc,char * argv[])
 {
 	int opt;
-	while ((opt = getopt(argc,argv,"c:o:"))!=-1)
+	string * s = new string[argc];
+	int * i = new int [argc];
+	int k = 0;
+	while ((opt = getopt(argc,argv,"c:o:x:"))!=-1)
 	{
+		i[k] = opt;
+		s[k] = optarg;
 		switch(opt)
 		{
 			case 'c':
@@ -16,9 +27,21 @@ string* eval_param(int argc,char * argv[])
 			case 'o':
 				cout << optarg;
 				break;
+			case 'x':
+				cout << optarg;
+				break;
 			default:
-				throw invalid_argument("Valid options are : -c (textfile) -o (hff file)");
+				throw invalid_argument("Valid options are : -c (input text file) -o (output file) -x (input hff file)");
 		}
+		k++;
 	}
-	return nullptr;
+	if (optind >= argc)
+	{
+		throw invalid_argument("Valid options are : -c (input text file) -o (output file) -x (input hff file)");
+	}
+	struct param p;
+	p.value = s;
+	p.copt = i;
+	p.length = k;
+	return p;
 }
