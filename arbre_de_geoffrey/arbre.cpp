@@ -22,12 +22,12 @@ noeud arbre::trouve_noeud(std::string s, noeud* n){
 }
 
 void arbre::inserer_noeud(noeud* n){
-	noeud *here = &root;
-	if (here->get_mot() == n->get_mot())
-		root= new noeud(n);
+	noeud *here = &n;
+	if (IsEmpty(root))
+		root = noeud(n);
 	else
 		if(n->get_mot() < root->get_mot()){
-			if(root->get_gauche() == IsEmpty())
+			if(IsEmpty(here->get_gauche()))
 				
 		}
 			
